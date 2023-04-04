@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=../Template/nu32dip.c ../Template/HW2.c
+SOURCEFILES_QUOTED_IF_SPACED=nu32dip.c HW2.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1812986871/nu32dip.o ${OBJECTDIR}/_ext/1812986871/HW2.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1812986871/nu32dip.o.d ${OBJECTDIR}/_ext/1812986871/HW2.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/nu32dip.o ${OBJECTDIR}/HW2.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/nu32dip.o.d ${OBJECTDIR}/HW2.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/1812986871/nu32dip.o ${OBJECTDIR}/_ext/1812986871/HW2.o
+OBJECTFILES=${OBJECTDIR}/nu32dip.o ${OBJECTDIR}/HW2.o
 
 # Source Files
-SOURCEFILES=../Template/nu32dip.c ../Template/HW2.c
+SOURCEFILES=nu32dip.c HW2.c
 
 
 
@@ -105,7 +105,7 @@ endif
 	@echo "--------------------------------------"
 
 MP_PROCESSOR_OPTION=32MX170F256B
-MP_LINKER_FILE_OPTION=,--script="../Template/NU32DIPbootloaded.ld"
+MP_LINKER_FILE_OPTION=,--script="NU32DIPbootloaded.ld"
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: assemble
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
@@ -121,30 +121,30 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/_ext/1812986871/nu32dip.o: ../Template/nu32dip.c  .generated_files/flags/default/bd7cdf92ca9b82cac4a5a246584727fcab18b1a6 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
-	@${MKDIR} "${OBJECTDIR}/_ext/1812986871" 
-	@${RM} ${OBJECTDIR}/_ext/1812986871/nu32dip.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1812986871/nu32dip.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/_ext/1812986871/nu32dip.o.d" -o ${OBJECTDIR}/_ext/1812986871/nu32dip.o ../Template/nu32dip.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+${OBJECTDIR}/nu32dip.o: nu32dip.c  .generated_files/flags/default/b08d428ff3876fbb7ddd7e2a96fee619d1574c1c .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/nu32dip.o.d 
+	@${RM} ${OBJECTDIR}/nu32dip.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/nu32dip.o.d" -o ${OBJECTDIR}/nu32dip.o nu32dip.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1812986871/HW2.o: ../Template/HW2.c  .generated_files/flags/default/816bf6a054ef2a30b074f3248fc63d1560bd5fae .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
-	@${MKDIR} "${OBJECTDIR}/_ext/1812986871" 
-	@${RM} ${OBJECTDIR}/_ext/1812986871/HW2.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1812986871/HW2.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/_ext/1812986871/HW2.o.d" -o ${OBJECTDIR}/_ext/1812986871/HW2.o ../Template/HW2.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+${OBJECTDIR}/HW2.o: HW2.c  .generated_files/flags/default/d72f8669f3e98a5f9df706375fcb0ef01a8e62ae .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/HW2.o.d 
+	@${RM} ${OBJECTDIR}/HW2.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/HW2.o.d" -o ${OBJECTDIR}/HW2.o HW2.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 else
-${OBJECTDIR}/_ext/1812986871/nu32dip.o: ../Template/nu32dip.c  .generated_files/flags/default/8fd3879007e510212128627dcf508369c417f05c .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
-	@${MKDIR} "${OBJECTDIR}/_ext/1812986871" 
-	@${RM} ${OBJECTDIR}/_ext/1812986871/nu32dip.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1812986871/nu32dip.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/_ext/1812986871/nu32dip.o.d" -o ${OBJECTDIR}/_ext/1812986871/nu32dip.o ../Template/nu32dip.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+${OBJECTDIR}/nu32dip.o: nu32dip.c  .generated_files/flags/default/a475281f4b3a41bc70621e8fb1f31c5dc2863e1 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/nu32dip.o.d 
+	@${RM} ${OBJECTDIR}/nu32dip.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/nu32dip.o.d" -o ${OBJECTDIR}/nu32dip.o nu32dip.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1812986871/HW2.o: ../Template/HW2.c  .generated_files/flags/default/8243ebb7349d07f9781da0c0867b3e4a850d3856 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
-	@${MKDIR} "${OBJECTDIR}/_ext/1812986871" 
-	@${RM} ${OBJECTDIR}/_ext/1812986871/HW2.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1812986871/HW2.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/_ext/1812986871/HW2.o.d" -o ${OBJECTDIR}/_ext/1812986871/HW2.o ../Template/HW2.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+${OBJECTDIR}/HW2.o: HW2.c  .generated_files/flags/default/b3ce269f4463a11a6afe152554da408ea8c25903 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/HW2.o.d 
+	@${RM} ${OBJECTDIR}/HW2.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/HW2.o.d" -o ${OBJECTDIR}/HW2.o HW2.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 endif
 
@@ -157,12 +157,12 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: link
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${DISTDIR}/HW2.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    ../Template/NU32DIPbootloaded.ld
+${DISTDIR}/HW2.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    NU32DIPbootloaded.ld
 	@${MKDIR} ${DISTDIR} 
 	${MP_CC} $(MP_EXTRA_LD_PRE) -g   -mprocessor=$(MP_PROCESSOR_OPTION)  -o ${DISTDIR}/HW2.${IMAGE_TYPE}.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)      -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,-D=__DEBUG_D,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,${DISTDIR}/memoryfile.xml -mdfp="${DFP_DIR}"
 	
 else
-${DISTDIR}/HW2.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   ../Template/NU32DIPbootloaded.ld
+${DISTDIR}/HW2.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   NU32DIPbootloaded.ld
 	@${MKDIR} ${DISTDIR} 
 	${MP_CC} $(MP_EXTRA_LD_PRE)  -mprocessor=$(MP_PROCESSOR_OPTION)  -o ${DISTDIR}/HW2.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,${DISTDIR}/memoryfile.xml -mdfp="${DFP_DIR}"
 	${MP_CC_DIR}/xc32-bin2hex ${DISTDIR}/HW2.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} 
