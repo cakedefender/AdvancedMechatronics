@@ -6,6 +6,8 @@
             <file>file:/Users/DMichael/Prog/AdvancedMechatronics/HW8/ssd1306.c</file>
             <file>file:/Users/DMichael/Prog/AdvancedMechatronics/HW8/font.h</file>
             <file>file:/Users/DMichael/Prog/AdvancedMechatronics/HW8/i2c_master_noint.c</file>
+            <file>file:/Users/DMichael/Prog/AdvancedMechatronics/HW8/IMU.c</file>
+            <file>file:/Users/DMichael/Prog/AdvancedMechatronics/HW8/IMU.h</file>
             <file>file:/Users/DMichael/Prog/AdvancedMechatronics/HW8/main.c</file>
             <file>file:/Users/DMichael/Prog/AdvancedMechatronics/HW8/ssd1306.h</file>
         </group>
