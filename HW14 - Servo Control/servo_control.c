@@ -23,6 +23,7 @@ int main(void) {
     OC1RS = 3050;
     int dir = 1;
 
+    // sweep servo from 45 to 135 degrees every 4 seconds, then back
     while(1){
         if(dir == 1){
             OC1RS = OC1RS + 82;
