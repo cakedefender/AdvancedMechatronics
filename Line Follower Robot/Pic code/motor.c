@@ -4,32 +4,38 @@
 volatile double PWM_left;
 volatile double PWM_right;
 
-// 200 Hz Velocity Controller ISR
-void __ISR(_TIMER_2_VECTOR, IPL3SOFT) VelocityControllerISR(void){
-        // Set motor PWM's
-        if (PWM_left < 0){
-            // set left backwards
-            TRISBCLR = 0b10;
-        } else{
-            // set left forwards
-            TRISBSET = 0b10;
-        }
-        if (PWM_right < 0){
-            // set left backwards
-            TRISBCLR = 0b100;
-        } else{
-            // set left forwards
-            TRISBSET = 0b100;
-        }
+// // 200 Hz Velocity Controller ISR
+// void __ISR(_TIMER_4_VECTOR, IPL1SOFT) VelocityControllerISR(void){
+//         // Set motor PWM's
+//         if (PWM_left < 0){
+//             // set left backwards
+//             TRISBCLR = 0b10;
+//         } else{
+//             // set left forwards
+//             TRISBSET = 0b10;
+//         }
+//         if (PWM_right < 0){
+//             // set left backwards
+//             TRISBCLR = 0b100;
+//         } else{
+//             // set left forwards
+//             TRISBSET = 0b100;
+//         }
 
-        PWM_left = abs(PWM_left);
-        PWM_right = abs(PWM_right);
+//         PWM_left = abs(PWM_left);
+//         PWM_right = abs(PWM_right);
+
+//         NU32DIP_WriteUART1("Got to 1\r\n");
         
-        OC3RS = (int)((PWM_right/100.0) * 2400) - 1;  // RIGHT motor
-        OC2RS = (int)((PWM_left/100.0) * 2400) - 1;   // LEFT  motor
+//         OC3RS = (int)((PWM_right/100.0) * 2400);  // RIGHT motor
+//         OC2RS = (int)((PWM_left/100.0) * 2400);   // LEFT  motor
 
-        IFS0bits.T2IF = 0; // clear interrupt flag
-}
+//         char msg[100];
+//         sprintf(msg, "Got to 2\r\nTime: %d", _CP0_GET_COUNT());
+//         NU32DIP_WriteUART1(msg);
+
+//         IFS0bits.T2IF = 0; // clear interrupt flag
+// }
 
 void Motor_Startup(){
     // Set up B1 & B2 as digital I/O pin for motor direction
@@ -37,17 +43,17 @@ void Motor_Startup(){
     TRISBSET  = 0b110;
     
 
-    // Set up Timer2 for 200 Hz Velocity Controller ISR
+    // Set up Timer4 for 200 Hz Velocity Controller ISR
     __builtin_disable_interrupts(); // disable interrupts
-    PR2 = (30000 - 1);             // frequency = 48,000,000 / prescaler / (PR2) = 200 Hz
-    TMR2 = 0;                     // Initialize Timer2 count to 0
-    T2CONbits.TCKPS = 0b011;      // Prescaler 1:8
-    T2CONbits.ON = 1;             // Enable Timer2
+    // PR4 = (30000 - 1);             // frequency = 48,000,000 / prescaler / (PR2) = 200 Hz
+    // TMR4 = 0;                     // Initialize Timer2 count to 0
+    // T4CONbits.TCKPS = 0b011;      // Prescaler 1:8
+    // T4CONbits.ON = 1;             // Enable Timer2
 
-    IPC2bits.T2IP = 3;            // interrupt priority 3
-    IPC2bits.T2IS = 0;            // interrupt sub-priority 0
-    IFS0bits.T2IF = 0;            // clear the int flag
-    IEC0bits.T2IE = 1;            // enable Timer2's interrupt
+    // IPC4bits.T4IP = 1;            // interrupt priority 1
+    // IPC4bits.T4IS = 0;            // interrupt sub-priority 0
+    // IFS0bits.T4IF = 0;            // clear the int flag
+    // IEC0bits.T4IE = 1;            // enable Timer4's interrupt
 
     // Set up Timer3 for 20 kHz for PWM to motors
     T3CONbits.TCKPS = 0;     // Timer3 prescaler N=1 (1:1)
@@ -77,18 +83,11 @@ void Motor_Startup(){
     OC2RS = 0;               // duty cycle = OC3RS/(PR3 + 1) = 0%
     OC2R = 0;                // initialize before turning OC3 on; afterward it is read-only
     // T3CONbits.ON = 1;        // turn on Timer3
-    OC2CONbits.ON = 1;       // turn on OC3
-
-
-    //
-    ///
-    //
-    //   check if both OC's can use same Timer?
-    //
-    //
-    ////
+    OC2CONbits.ON = 1;       // turn on OC2
 }
 
+// This function used to rely on the ISR, but it was interfering with the main.c infinite while loop,
+// so now it just sets OC3RS and OC2RS manually.
 void Motor_SetPWM(double left, double right){
     // Limit PWM to between 0.0 and 100.0
     left = left > 100.0 ? 100.0 : left;
@@ -96,6 +95,24 @@ void Motor_SetPWM(double left, double right){
     right = right > 100.0 ? 100.0 : right;
     right = right < 0.0 ? 0 : right;
 
-    PWM_left = left;
-    PWM_right = right;
+    // Set motor PWM's
+    if (PWM_left < 0){
+        // set left backwards
+        TRISBCLR = 0b10;
+    } else{
+        // set left forwards
+        TRISBSET = 0b10;
+    }
+    if (PWM_right < 0){
+        // set left backwards
+        TRISBCLR = 0b100;
+    } else{
+        // set left forwards
+        TRISBSET = 0b100;
+    }
+    PWM_left = abs(PWM_left);
+    PWM_right = abs(PWM_right);
+    
+    OC3RS = (int)((PWM_right/100.0) * 2400);  // RIGHT motor
+    OC2RS = (int)((PWM_left/100.0) * 2400);   // LEFT  motor
 }

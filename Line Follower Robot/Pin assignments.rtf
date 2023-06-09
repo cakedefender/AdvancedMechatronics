@@ -16,13 +16,17 @@ PIC:\
 Hbridge A = Left, B = Right\
 \
 \
-Timer 2 - position control ISR\
-Timer 3 - PWM\
+Timer 4 - position control ISR\
+Timer 3 - PWM for motors\
+Timer 2 - PWM for servo\
+\
 A3 - OC3 for motor pwm    RIGHT\
 B8 - OC2 for motor pwm    LEFT\
 \
 B1 - I/O for motor direction  LEFT\
 B2 - I/O for motor direction  RIGHT\
+\
+RB7 - OC1 for servo PWM\
 \
 A1 - U2RX\
 B0 - U2TX\
